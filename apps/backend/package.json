@@ -4,8 +4,15 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {},
-  "dependencies": {},
+  "dependencies": {
+    "@netlify/functions": "^2.3.0",
+    "effect": "^2.0.0-next.54",
+    "node-fetch": "^3.3.2",
+    "zod": "^3.22.4"
+  },
   "devDependencies": {
+    "@types/node": "^20.8.10",
+    "netlify-cli": "^17.0.1",
     "typescript": "^5.0.2"
   }
 }
