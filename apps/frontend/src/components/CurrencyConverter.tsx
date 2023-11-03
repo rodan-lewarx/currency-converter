@@ -1,15 +1,20 @@
 import { useQuery } from "react-query";
 
 const CurrencyConverter = () => {
-  const currencyList = useQuery("currencyList", () =>
+  const { data: currencyList } = useQuery("currencyList", () =>
     fetch(
-      "https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt"
-    ).then((res) => res.text())
+      "https://currency-converter-be.netlify.app/.netlify/functions/getCurrencyRates"
+    ).then((res) => res.json())
   );
 
   console.log(currencyList);
 
-  return <h1>Currency Converter App</h1>;
+  return (
+    <>
+      <h1>Currency Converter App</h1>
+      <code>{JSON.stringify(currencyList)}</code>
+    </>
+  );
 };
 
 export default CurrencyConverter;
