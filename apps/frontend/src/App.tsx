@@ -1,4 +1,6 @@
 import { useCurrencyListQuery } from "./api/useCurrencyListQuery";
+import { CurrencyExchangeForm } from "./currencyExchange/CurrencyExchangeForm";
+import { CurrencyList } from "./currencyList/CurrencyList";
 
 const App = () => {
   const currencyList = useCurrencyListQuery();
@@ -6,7 +8,8 @@ const App = () => {
   return (
     <>
       <h1>Currency Converter App</h1>
-      <code>{JSON.stringify(currencyList)}</code>
+      <CurrencyList currencyList={currencyList ?? []} />
+      <CurrencyExchangeForm currencyList={currencyList ?? []} />
     </>
   );
 };
