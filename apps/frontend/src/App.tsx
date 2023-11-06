@@ -8,8 +8,8 @@ const App = () => {
   return (
     <>
       <h1>Currency Converter App</h1>
-      <CurrencyList currencyList={currencyList ?? []} />
-      <CurrencyExchangeForm currencyList={currencyList ?? []} />
+      <CurrencyList currencyList={currencyList} />
+      <CurrencyExchangeForm currencyList={currencyList} />
     </>
   );
 };

@@ -23,5 +23,5 @@ const currencyListFetcher = async () => {
 export const useCurrencyListQuery = () => {
   const { data: currencyList } = useQuery("currencyList", currencyListFetcher);
 
-  return currencyList;
+  return currencyList ?? [];
 };
