@@ -1,4 +1,5 @@
 import { Currency } from "@task/currency-list-schema";
+import { Table } from "../ui-components";
 
 export const CurrencyList = ({
   currencyList,
@@ -6,7 +7,7 @@ export const CurrencyList = ({
   currencyList: Currency[];
 }) => {
   return (
-    <table>
+    <Table>
       <thead>
         <tr>
           <th>Country</th>
@@ -27,6 +28,6 @@ export const CurrencyList = ({
           </tr>
         ))}
       </tbody>
-    </table>
+    </Table>
   );
 };

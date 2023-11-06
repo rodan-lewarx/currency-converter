@@ -5,6 +5,7 @@ import {
   QueryClientProvider,
   useQueryErrorResetBoundary,
 } from "react-query";
+import { Heading, Button } from "../ui-components";
 
 export const QueryProvider = ({
   children,
@@ -20,10 +21,13 @@ export const QueryProvider = ({
         <ErrorBoundary
           onReset={reset}
           fallbackRender={({ resetErrorBoundary }) => (
-            <div>
-              No currency rates available at this time. Please retry later.
-              <button onClick={() => resetErrorBoundary()}>Try again</button>
-            </div>
+            <>
+              <Heading>There was an error</Heading>
+              <p>
+                No currency rates available at this time. Please retry later.
+              </p>
+              <Button onClick={() => resetErrorBoundary()}>Try again</Button>
+            </>
           )}
         >
           <Suspense fallback={<>Loading...</>}>{children}</Suspense>

@@ -2,6 +2,15 @@ import { Currency } from "@task/currency-list-schema";
 import { useReducer } from "react";
 import { exchangeCurrency, amountSchema } from "./exchangeCurrency";
 import { createDefaultState, formReducer } from "./usecurrencyExchangeForm";
+import {
+  Button,
+  Error,
+  Result,
+  Input,
+  Select,
+  FormLayout,
+  FormLabel,
+} from "../ui-components";
 
 export const CurrencyExchangeForm = ({
   currencyList,
@@ -46,26 +55,29 @@ export const CurrencyExchangeForm = ({
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input
-          type="number"
-          placeholder="Enter amount"
-          value={state.amount}
-          onChange={handleChangeAmount}
-        />
-        <select
-          value={state.currency.currencyCode}
-          onChange={handleChangeCurrency}
-        >
-          {currencyList.map((currency) => (
-            <option key={currency.currencyCode} value={currency.currencyCode}>
-              {currency.currencyCode}
-            </option>
-          ))}
-        </select>
-        <button type="submit">Convert</button>
-        {state.error && <p>{state.error}</p>}
+        <FormLayout>
+          <Input
+            type="number"
+            placeholder="Enter amount"
+            value={state.amount}
+            onChange={handleChangeAmount}
+          />
+          <FormLabel>CZK to</FormLabel>
+          <Select
+            value={state.currency.currencyCode}
+            onChange={handleChangeCurrency}
+          >
+            {currencyList.map((currency) => (
+              <option key={currency.currencyCode} value={currency.currencyCode}>
+                {currency.currencyCode}
+              </option>
+            ))}
+          </Select>
+          <Button type="submit">Convert</Button>
+        </FormLayout>
+        {state.error && <Error>{state.error}</Error>}
         {state.result && (
-          <p>{`${state.amount} CZK = ${state.result} ${state.currency.currencyCode}`}</p>
+          <Result>{`${state.amount} CZK = ${state.result} ${state.currency.currencyCode}`}</Result>
         )}
       </form>
     </>
