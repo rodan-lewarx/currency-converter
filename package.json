@@ -9,7 +9,8 @@
     "lint": "yarn workspaces run lint",
     "preview": "yarn workspace @task/currency-converter-be dev & yarn workspace @task/currency-converter-fe vite preview",
     "prepare": "husky install",
-    "typeCheck": "yarn workspaces run typeCheck"
+    "typeCheck": "yarn workspaces run typeCheck",
+    "test": "yarn vitest run"
   },
   "workspaces": [
     "apps/*",
@@ -18,6 +19,7 @@
   "devDependencies": {
     "eslint": "^8.45.0",
     "husky": "^8.0.3",
-    "prettier": "3.0.3"
+    "prettier": "3.0.3",
+    "vitest": "^0.34.6"
   }
 }
