@@ -30,7 +30,9 @@ export const QueryProvider = ({
             </>
           )}
         >
-          <Suspense fallback={<>Loading...</>}>{children}</Suspense>
+          <Suspense fallback={<Heading>Loading...</Heading>}>
+            {children}
+          </Suspense>
         </ErrorBoundary>
       </QueryClientProvider>
     </>
