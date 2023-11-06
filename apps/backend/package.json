@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "yarn netlify dev",
-    "build": "yarn netlify build"
+    "build": "yarn netlify build",
+    "lint": "yarn eslint \"{functions, currencyConverter}/*.ts\"",
+    "typeCheck": "yarn tsc --noEmit"
   },
   "dependencies": {
     "@netlify/functions": "^2.3.0",
@@ -16,6 +18,10 @@
   },
   "devDependencies": {
     "@types/node": "^20.8.10",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
     "netlify-cli": "^17.0.1",
     "typescript": "^5.0.2"
   }

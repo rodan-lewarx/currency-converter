@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "noUnusedLocals": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowUnreachableCode": false,
+    "forceConsistentCasingInFileNames": true,
+    "target": "es2021",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "outDir": "./build",
+  },
+  "include": ["functions", "currencyParser"],
+}

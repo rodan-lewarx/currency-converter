@@ -6,8 +6,18 @@
   "scripts": {
     "dev": "yarn workspace currency-converter-be dev & yarn workspace currency-converter-fe dev",
     "build": "yarn workspace currency-converter-be build & yarn workspace currency-converter-fe build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "yarn workspace currency-converter-be dev & yarn workspace currency-converter-fe vite preview"
+    "lint": "yarn workspaces run lint",
+    "preview": "yarn workspace currency-converter-be dev & yarn workspace currency-converter-fe vite preview",
+    "prepare": "husky install",
+    "typeCheck": "yarn workspaces run typeCheck"
   },
-  "workspaces": ["apps/*", "packages/*"]
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "eslint": "^8.45.0",
+    "husky": "^8.0.3",
+    "prettier": "3.0.3"
+  }
 }
