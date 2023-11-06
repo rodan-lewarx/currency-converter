@@ -20,7 +20,7 @@ const App = () => {
           onReset={reset}
           fallbackRender={({ resetErrorBoundary }) => (
             <div>
-              There was an error loading data!
+              No currency rates available at this time. Please retry later.
               <button onClick={() => resetErrorBoundary()}>Try again</button>
             </div>
           )}

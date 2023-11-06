@@ -3,9 +3,16 @@ import { useQuery } from "react-query";
 const ENDPOINT_URL = import.meta.env.VITE_ENDPOINT_URL;
 
 const CurrencyConverter = () => {
-  const { data: currencyList } = useQuery("currencyList", () =>
-    fetch(ENDPOINT_URL).then((res) => res.json())
-  );
+  const { data: currencyList } = useQuery("currencyList", async () => {
+    const response = await fetch(ENDPOINT_URL);
+    const data = await response.json();
+
+    if (data.length === 0) {
+      throw new Error("No data found");
+    } else {
+      return data;
+    }
+  });
 
   return (
     <>
