@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { Effect, pipe } from "effect";
+import { Currency } from "@task/currency-list-schema";
 
 const schema = z.tuple([
   z.string(),
@@ -38,12 +39,12 @@ export const parseRows = (rows: string[]) =>
         amount: amount,
         currencyCode: currencyCode,
         rate: rate,
-      });
+      } as Currency);
     } else {
       Effect.logWarning(`Invalid row data: ${result.error.message}}`);
     }
     return acc;
-  }, [] as any);
+  }, [] as Currency[]);
 
 export const returnResponse = (data: any) => ({
   body: JSON.stringify(data),
