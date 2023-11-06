@@ -46,7 +46,7 @@ export const parseRows = (rows: string[]) =>
     return acc;
   }, [] as Currency[]);
 
-export const returnResponse = (data: any) => ({
+export const returnResponse = (data: Currency[]) => ({
   body: JSON.stringify(data),
   statusCode: 200,
   headers: {
