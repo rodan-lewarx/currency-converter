@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "yarn workspace currency-converter-be dev & yarn workspace currency-converter-fe dev",
-    "build": "yarn workspace currency-converter-be build & yarn workspace currency-converter-fe build",
+    "dev": "yarn workspace @task/currency-converter-be dev & yarn workspace @task/currency-converter-fe dev",
+    "build": "yarn workspace @task/currency-converter-be build & yarn workspace @task/currency-converter-fe build",
     "lint": "yarn workspaces run lint",
-    "preview": "yarn workspace currency-converter-be dev & yarn workspace currency-converter-fe vite preview",
+    "preview": "yarn workspace @task/currency-converter-be dev & yarn workspace @task/currency-converter-fe vite preview",
     "prepare": "husky install",
     "typeCheck": "yarn workspaces run typeCheck"
   },
