@@ -11,9 +11,9 @@ const schema = z.tuple([
 
 export const fetchData = Effect.tryPromise({
   try: () =>
-    fetch(
-      "https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt"
-    ).then((response) => response.text()),
+    fetch(process.env.CNB_ENDPOINT_URL ?? "").then((response) =>
+      response.text()
+    ),
   catch: () => new Error("Failed to fetch data"),
 });
 

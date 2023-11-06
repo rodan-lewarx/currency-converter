@@ -1,13 +1,11 @@
 import { useQuery } from "react-query";
 
+const ENDPOINT_URL = import.meta.env.VITE_ENDPOINT_URL;
+
 const CurrencyConverter = () => {
   const { data: currencyList } = useQuery("currencyList", () =>
-    fetch(
-      "https://currency-converter-be.netlify.app/.netlify/functions/getCurrencyRates"
-    ).then((res) => res.json())
+    fetch(ENDPOINT_URL).then((res) => res.json())
   );
-
-  console.log(currencyList);
 
   return (
     <>
