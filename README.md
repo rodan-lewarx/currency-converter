@@ -1,27 +1,44 @@
-# React + TypeScript + Vite
+# Currency Converter test task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Deployed solution
 
-Currently, two official plugins are available:
+- FE is deployed at https://currency-converter-fe.netlify.app
+- BE is deployed at https://currency-converter-be.netlify.app/.netlify/functions/getCurrencyRates
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Dev environment setup
 
-## Expanding the ESLint configuration
+1. create env files in `apps/frontend/.env` and `apps/backend/.env` based on the example files in the same location
+2. `yarn` to install dependecies
+3. `yarn dev` to run dev environment (Netlify CLI might be needed and initialized for the backend part to work properly)
+4. tasks for linting, testing, typechecking are in the package.json in the root.
+5. FE runs on `http://localhost:5173/` and BE is available on `http://localhost:3001/.netlify/functions/getCurrencyRates`
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Task description
 
-- Configure the top-level `parserOptions` property like this:
+> Create a simple React app (don’t use NextJS please), which:
+>
+> 1. When it starts, retrieve the latest currency exchange rates from the Czech National Bank.
+>
+>    API URL: https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt
+>
+>    Documentation: https://www.cnb.cz/en/faq/Format-of-the-foreign-exchange-market-rates/
+>
+> 2. Parses the downloaded data and clearly displays it to the user in the UI.
+> 3. Add a simple form, into which the customer can enter an amount in CZK and select a currency, and after submitting (clicking a button or in real-time) sees the amount entered in CZK converted into the selected currency.
+> 4. Commit your code throughout your work and upload the resulting codebase into a Github repo.
+> 5. Deploy the app so it can be viewed online (it doesn’t matter where - e.q. Vercel, Netflify, etc.).
+> 6. Tech stack: React (+ Hooks), TypeScript, [Styled Components](https://styled-components.com/), [React Query](https://www.npmjs.com/package/@tanstack/react-query).
+>
+> Overall: Keep the code simple and the UI nice and easy to use for the user.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+## Solution
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- In the repository is a yarn workspaces monorepo with two appllications - backend (netlify function for parsing and fetching the currency rate) and frontend (react app created with create vite app) and one shared package (zod type schema and shared type for Currency)
+- BE uses:
+  - Netlify function to fetch, parse, format and return the data
+  - Effecct.ts
+- FE uses:
+  - Styled Components for styling
+  - ReactQuery for data fetching (with suspense)
+  - Vite as a bundler
+  - Vitest as test runner
