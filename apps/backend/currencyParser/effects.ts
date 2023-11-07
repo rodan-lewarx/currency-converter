@@ -13,7 +13,7 @@ const schema = z.tuple([
 export const fetchData = Effect.tryPromise({
   try: () =>
     fetch(process.env.CNB_ENDPOINT_URL ?? "").then((response) =>
-      response.text()
+      response.text(),
     ),
   catch: () => new Error("Failed to fetch data"),
 });
@@ -71,7 +71,7 @@ export const fetchAndParseData = Effect.orElseSucceed(
     Effect.map(removeEmptyLines),
     Effect.map(removeHeaders),
     Effect.map(parseRows),
-    Effect.map(returnResponse)
+    Effect.map(returnResponse),
   ),
-  handleError
+  handleError,
 );

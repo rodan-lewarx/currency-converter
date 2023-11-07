@@ -54,9 +54,9 @@ export const successFetchAndParse = Effect.orElseSucceed(
     Effect.map(removeEmptyLines),
     Effect.map(removeHeaders),
     Effect.map(parseRows),
-    Effect.map(returnResponse)
+    Effect.map(returnResponse),
   ),
-  handleError
+  handleError,
 );
 
 export const errorFetchAndParse = Effect.orElseSucceed(
@@ -66,9 +66,9 @@ export const errorFetchAndParse = Effect.orElseSucceed(
     Effect.map(removeEmptyLines),
     Effect.map(removeHeaders),
     Effect.map(parseRows),
-    Effect.map(returnResponse)
+    Effect.map(returnResponse),
   ),
-  handleError
+  handleError,
 );
 
 describe("fetch and parse data", () => {

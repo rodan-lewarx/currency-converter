@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "yarn netlify dev",
     "build": "yarn netlify build",
-    "lint": "yarn eslint \"{functions, currencyConverter}/*.ts\"",
+    "lint": "yarn eslint . --ext ts,tsx",
     "typeCheck": "yarn tsc --noEmit"
   },
   "dependencies": {
